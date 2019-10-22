@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $shark;
+  min-width: $width-mobile;
+  width: 100%;
+  height: 100%;
+  color: $white;
+  font-family: $font;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 31px;
+
+  @include desktop-lg {
+    font-size: size-desktop-lg(18px);
+    line-height: size-desktop-lg(28px);
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  box-sizing: border-box;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 64px;
+
+  @include desktop-lg {
+    max-width: size-desktop-lg(1280px);
+  }
+
+  @include mobile {
+    padding: 0 20px;
+  }
+}

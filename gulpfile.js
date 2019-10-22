@@ -142,5 +142,5 @@ gulp.task(`refresh`, function (done) {
 });
 
 // СБОРКА И СТАРТ
-gulp.task(`build`, gulp.series(`clean`, `copy`, `images`, `webp`, `imagemin`, `sprite`, `css`, `js-vendor`, `js`, `html`));
+gulp.task(`build`, gulp.series(`clean`, `copy`, `images`, `webp`, /*`imagemin`,*/ `sprite`, `css`, `js-vendor`, `js`, `html`));
 gulp.task(`start`, gulp.series(`build`, `server`));

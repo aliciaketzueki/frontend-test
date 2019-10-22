@@ -1,0 +1,20 @@
+.slider {
+  //background: red;
+}
+
+.slider h2 {
+  @include title-reset;
+  font-size: 32px;
+}
+
+.slider ul {
+  @include list-reset;
+}
+
+.slider a[href] {
+  @include link-reset;
+}
+
+.slider h3 {
+  @include title-reset;
+}

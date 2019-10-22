@@ -1,0 +1,144 @@
+// СБРОС КАСТОМНЫХ СТИЛЕЙ
+@mixin title-reset {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin field-reset {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+}
+
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin link-reset {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin button-reset {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: inherit;
+}
+
+// РАЗРЕШЕНИЯ
+// 1920 и больше
+@mixin desktop-lg {
+  @media (min-width: $width-desktop-lg) {
+    @content;
+  }
+}
+// меньше 1440
+@mixin desktop {
+  @media (max-width: $width-desktop - 1px) {
+    @content;
+  }
+}
+// меньше 1024
+@mixin tablet {
+  @media (max-width: $width-tablet-lg - 1px) {
+    @content;
+  }
+}
+// меньше 768
+@mixin mobile {
+  @media (max-width: $width-tablet - 1px) {
+    @content;
+  }
+}
+
+// РЕТИНА
+@mixin retina {
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    @content;
+  }
+}
+
+// ШРИФТЫ
+@mixin font-face($name, $filename, $weight) {
+  @font-face {
+    font-family: $name;
+    font-weight: $weight;
+    font-style: normal;
+    font-display: swap;
+    src: url("../fonts/"+$filename+".woff2") format("woff2"),
+      url("../fonts/"+$filename+".woff") format("woff");
+  }
+}
+
+// ХОВЕРЫ
+@mixin hover {
+  will-change: opacity;
+  transition: opacity $transition;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    opacity: 0.6;
+  }
+
+  &:active {
+    outline: none;
+    opacity: 0.3;
+  }
+}
+
+// ПСЕВДОЭЛЕМЕНТЫ
+@mixin underline {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+// ГРИДЫ ДЛЯ IE11
+@mixin grid-ie-calc($items: 30, $wrap-on: 3, $grid-gap: 30px) {
+  $current-row: 1;
+  $current-column: 1;
+
+  @if $grid-gap > 0 {
+    & {
+      margin: $grid-gap / 2;
+
+      @supports (grid-gap: $grid-gap) {
+        margin: 0;
+      }
+    }
+  }
+
+  @for $i from 1 through $items {
+    @if $current-column > $wrap-on + 2 {
+      $current-column: 1;
+      $current-row: $current-row + 2;
+    }
+
+    &:nth-child(#{$i}) {
+      -ms-grid-row: $current-row;
+      -ms-grid-column: $current-column;
+    }
+
+    $current-column: $current-column + 2;
+  }
+}
