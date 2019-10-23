@@ -1,20 +1,145 @@
 .slider {
-  //background: red;
+  padding-left: 64px;
+  padding-top: 70px;
+  padding-bottom: 43px;
+  padding-right: calc(64px - 20px);
 }
 
 .slider h2 {
   @include title-reset;
   font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.swiper-container {
+  padding: 0 20px;
+  margin-left: -20px;
 }
 
 .slider ul {
   @include list-reset;
 }
 
-.slider a[href] {
-  @include link-reset;
+.slider li {
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.slider h3 {
+.slider a[href] {
+  @include link-reset;
+  position: relative;
+  display: block;
+  background-color: $silver;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+.slider figure {
+  @include field-reset;
+  
+}
+
+.slider picture,
+.slider img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 357px;
+  object-fit: cover;
+
+  @include tablet {
+    min-height: 300px;
+  }
+}
+
+.slider figcaption {
   @include title-reset;
+  position: absolute;
+  z-index: 2;
+  bottom: 26px;
+  left: 24px;
+}
+
+.slider__btns {
+  margin-top: 38px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-button-disabled {
+    @include button-reset;
+    margin: 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    opacity: 1;
+
+    svg {
+      fill: transparent;
+      stroke: $white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: stroke $transition;
+    }
+    
+
+    &:hover svg {
+      stroke: $tangerine;
+    }
+  }
+
+  .swiper-button-prev {
+    margin-right: 24px;
+  }
+
+  .swiper-button-next {
+    margin-left: 24px;
+    
+    svg {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+
+  .swiper-pagination {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .swiper-pagination span + span {
+    margin-left: 10px;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    background-color: $white;
+    opacity: 0.3;
+  }
+
+  .swiper-pagination .swiper-pagination-bullet-active {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+  }
 }

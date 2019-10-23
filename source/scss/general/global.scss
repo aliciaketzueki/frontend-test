@@ -52,7 +52,7 @@ img {
   margin: 0 auto;
   width: 100%;
   max-width: 1280px;
-  padding: 0 64px;
+  //padding: 0 64px;
 
   @include desktop-lg {
     max-width: size-desktop-lg(1280px);
