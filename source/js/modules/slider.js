@@ -5,14 +5,14 @@
     return;
   }
 
-  let swiperDesktop = undefined;
-  let swiperMobile = undefined;
+  let swiperDesktop;
+  let swiperMobile;
   let size = 40;
   const START_SIZE = 40;
   const DESKTOP_WIDTH = 1280;
 
-  // 
-  function calcSpaceBetween () {
+  // Скейлинг расстояния между слайдами
+  function calcSpaceBetween() {
     if (window.matchMedia(`(min-width: 1280px)`).matches) {
       size = (screen.width * START_SIZE) / DESKTOP_WIDTH;
       swiperDesktop.params.spaceBetween = size;
@@ -21,10 +21,10 @@
   }
 
   // Слайдер на десктопе
-  function initSlider () {
+  function initSlider() {
     if (window.matchMedia(`(min-width: 768px)`).matches) {
-      if (swiperDesktop == undefined) {
-        swiperDesktop = new Swiper('.slider .swiper-container', {
+      if (swiperDesktop === undefined) {
+        swiperDesktop = new window.Swiper(`.slider .swiper-container`, {
           slidesPerView: 3,
           slidesPerColumn: 2,
           spaceBetween: 40,
@@ -32,12 +32,12 @@
           observeParents: true,
           observeSlideChildren: true,
           pagination: {
-            el: '.slider .swiper-pagination',
+            el: `.slider .swiper-pagination`,
             clickable: true,
           },
           navigation: {
-            nextEl: '.slider .swiper-button-next',
-            prevEl: '.slider .swiper-button-prev',
+            nextEl: `.slider .swiper-button-next`,
+            prevEl: `.slider .swiper-button-prev`,
           },
           breakpoints: {
             1279: {
@@ -47,18 +47,20 @@
         });
       }
 
-      if (swiperMobile != undefined) {
+      if (swiperMobile !== undefined) {
         swiperMobile.destroy();
         swiperMobile = undefined;
       }
+
+      swiperDesktop.el.style.opacity = 1;
     } else {
-      if (swiperDesktop != undefined) {
+      if (swiperDesktop !== undefined) {
         swiperDesktop.destroy();
         swiperDesktop = undefined;
       }
 
-      if (swiperMobile == undefined) {
-        swiperMobile = new Swiper('.slider .swiper-container', {
+      if (swiperMobile === undefined) {
+        swiperMobile = new window.Swiper(`.slider .swiper-container`, {
           slidesPerView: 1,
           slidesPerColumn: 1,
           spaceBetween: 16,
@@ -68,13 +70,14 @@
           observeParents: true,
           observeSlideChildren: true,
           pagination: {
-            el: '.slider .swiper-pagination',
+            el: `.slider .swiper-pagination`,
             clickable: true,
           },
         });
       }
-    }
 
+      swiperMobile.el.style.opacity = 1;
+    }
     calcSpaceBetween();
   }
 

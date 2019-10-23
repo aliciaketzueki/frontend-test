@@ -1,0 +1,35 @@
+.no-js {
+  display: flex;
+
+  .slider ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .slider li {
+    width: 31%;
+    margin-bottom: 40px;
+  }
+
+  .slider .swiper-container {
+    opacity: 1;
+  }
+
+  .slider .slider__btns {
+    display: none;
+  }
+
+  @include tablet {
+    .slider li {
+      width: 47%;
+    }
+  }
+
+  @include mobile {
+    .slider li {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}

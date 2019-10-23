@@ -29,6 +29,7 @@
 
   @include mobile {
     margin-left: 16px;
+    margin-right: 16px;
   }
 }
 
@@ -36,6 +37,8 @@
   padding-left: 24px;
   margin-right: 24px;
   margin-left: -24px;
+
+  opacity: 0;
 
   @include desktop {
     padding-left: size-desktop(24px);
@@ -55,7 +58,7 @@
 }
 
 .slider li {
-  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   overflow: hidden;
 
@@ -69,7 +72,6 @@
   position: relative;
   display: block;
   background-color: $silver;
-  
 
   &::after {
     content: "";
@@ -83,16 +85,25 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
   }
 
+  &:hover figcaption {
+    opacity: 0.5;
+  }
+
   @include desktop {
     &::after {
       height: size-desktop(140px);
+    }
+  }
+
+  @include tablet {
+    &::after {
+      height: 118px;
     }
   }
 }
 
 .slider figure {
   @include field-reset;
-  
 }
 
 .slider picture,
@@ -115,6 +126,7 @@
   bottom: 26px;
   left: 24px;
   padding-right: 24px;
+  transition: opacity $transition;
 
   @include desktop {
     bottom: size-desktop(26px);
@@ -152,7 +164,6 @@
       transform: translate(-50%, -50%);
       transition: stroke $transition;
     }
-    
 
     &:hover svg {
       stroke: $tangerine;
@@ -165,7 +176,7 @@
 
   .swiper-button-next {
     margin-left: 24px;
-    
+
     svg {
       transform: translate(-50%, -50%) rotate(180deg);
     }
@@ -211,7 +222,7 @@
     .swiper-button-prev {
       margin-right: size-desktop(24px);
     }
-  
+
     .swiper-button-next {
       margin-left: size-desktop(24px);
     }

@@ -106,33 +106,3 @@
     bottom: 0;
   }
 }
-
-// ГРИДЫ ДЛЯ IE11
-@mixin grid-ie-calc($items: 30, $wrap-on: 3, $grid-gap: 30px) {
-  $current-row: 1;
-  $current-column: 1;
-
-  @if $grid-gap > 0 {
-    & {
-      margin: $grid-gap / 2;
-
-      @supports (grid-gap: $grid-gap) {
-        margin: 0;
-      }
-    }
-  }
-
-  @for $i from 1 through $items {
-    @if $current-column > $wrap-on + 2 {
-      $current-column: 1;
-      $current-row: $current-row + 2;
-    }
-
-    &:nth-child(#{$i}) {
-      -ms-grid-row: $current-row;
-      -ms-grid-column: $current-column;
-    }
-
-    $current-column: $current-column + 2;
-  }
-}
