@@ -2,22 +2,40 @@
   padding-left: 64px;
   padding-top: 70px;
   padding-bottom: 43px;
-  padding-right: calc(64px - 20px);
+  padding-right: calc(64px - 24px);
+
+  @include mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .slider h2 {
   @include title-reset;
   font-size: 32px;
   margin-bottom: 35px;
+
+  @include mobile {
+    margin-left: 16px;
+  }
 }
 
 .swiper-container {
-  padding: 0 20px;
-  margin-left: -20px;
+  padding: 0 24px;
+  margin-left: -24px;
+
+  @include mobile {
+    margin: 0;
+  }
 }
 
-.slider ul {
+.slider ul.swiper-wrapper {
   @include list-reset;
+  display: flex;
+
+  @include mobile {
+    //flex-wrap: nowrap;
+  }
 }
 
 .slider li {
@@ -31,6 +49,7 @@
   position: relative;
   display: block;
   background-color: $silver;
+  
 
   &::after {
     content: "";
@@ -73,7 +92,6 @@
 
 .slider__btns {
   margin-top: 38px;
-  height: 48px;
   display: flex;
   justify-content: center;
 
@@ -141,5 +159,14 @@
     width: 10px;
     height: 10px;
     opacity: 1;
+  }
+
+  @include mobile {
+    margin-top: 48px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
   }
 }
