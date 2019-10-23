@@ -1,4 +1,4 @@
-# Portal-frontend
+# Frontend-test
 
 ## Установка и сборка
 
