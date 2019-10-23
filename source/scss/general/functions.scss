@@ -11,10 +11,15 @@
 
 // меньше 1440 (1439 - 768)
 @function size-tablet($size-in-px) {
-  @return $size-in-px / $width-desktop-small * 100vw;
+  @return $size-in-px / $width-tablet * 100vw;
 }
 
 // меньше 768 (767 - 320)
 @function size-mobile($size-in-px) {
   @return $size-in-px / $width-mobile * 100vw;
+}
+
+// Высота
+@function size-vh($size-in-px, $container-height) {
+  @return $size-in-px / $container-height * 100vh;
 }

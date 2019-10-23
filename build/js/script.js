@@ -7,6 +7,18 @@
 
   let swiperDesktop = undefined;
   let swiperMobile = undefined;
+  let size = 40;
+  const START_SIZE = 40;
+  const DESKTOP_WIDTH = 1280;
+
+  // 
+  function calcSpaceBetween () {
+    if (window.matchMedia(`(min-width: 1280px)`).matches) {
+      size = (screen.width * START_SIZE) / DESKTOP_WIDTH;
+      swiperDesktop.params.spaceBetween = size;
+      swiperDesktop.update();
+    }
+  }
 
   // Слайдер на десктопе
   function initSlider () {
@@ -39,7 +51,7 @@
         swiperMobile.destroy();
         swiperMobile = undefined;
       }
-    } else if (window.matchMedia(`(max-width: 767px)`).matches) {
+    } else {
       if (swiperDesktop != undefined) {
         swiperDesktop.destroy();
         swiperDesktop = undefined;
@@ -62,6 +74,8 @@
         });
       }
     }
+
+    calcSpaceBetween();
   }
 
   initSlider();

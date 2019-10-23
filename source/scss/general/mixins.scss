@@ -37,21 +37,15 @@
 }
 
 // РАЗРЕШЕНИЯ
-// 1920 и больше
-@mixin desktop-lg {
-  @media (min-width: $width-desktop-lg) {
-    @content;
-  }
-}
-// меньше 1440
+// 1280 и больше
 @mixin desktop {
-  @media (max-width: $width-desktop - 1px) {
+  @media (min-width: $width-desktop) {
     @content;
   }
 }
-// меньше 1024
+// меньше 1280
 @mixin tablet {
-  @media (max-width: $width-tablet-lg - 1px) {
+  @media (max-width: $width-desktop - 1px) {
     @content;
   }
 }
